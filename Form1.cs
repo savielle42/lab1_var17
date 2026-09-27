@@ -44,9 +44,9 @@ namespace lab1_var17
 
             // Зчитуємо введені значення з текстових полів
             double xn = Convert.ToDouble(this.textBox1.Text);
-            double xk = Convert.ToDouble(this.textBox2.Text);
+            double xk = Convert.ToDouble(this.textBox4.Text);
             double h = Convert.ToDouble(this.textBox3.Text);
-            double a = Convert.ToDouble(this.textBox4.Text);
+            double a = Convert.ToDouble(this.textBox2.Text);
 
             // Очищаємо попередні результати перед новим розрахунком
             dataGridView1.Rows.Clear();
@@ -63,7 +63,12 @@ namespace lab1_var17
                     Math.Round(tabul.xy[i, 0], 2).ToString(),
                     Math.Round(tabul.xy[i, 1], 3).ToString()
                 );
-                chart1.Series[0].Points.AddXY(tabul.xy[i, 0], tabul.xy[i, 1]);
+
+                // 2. Додаємо точку на графік Chart тільки якщо Y є коректним числом
+                if (!double.IsNaN(tabul.xy[i, 1]) && !double.IsInfinity(tabul.xy[i, 1]))
+                {
+                    chart1.Series[0].Points.AddXY(tabul.xy[i, 0], tabul.xy[i, 1]);
+                }
             }
         }
 

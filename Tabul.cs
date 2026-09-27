@@ -33,7 +33,7 @@ namespace lab1_var17
             double y = 0;
             int i = 0;
 
-            while (x <= xk)
+            while (x <= xk )
             {
                 if (x <= 0)
                 {
